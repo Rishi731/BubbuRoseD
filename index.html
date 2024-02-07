@@ -101,11 +101,9 @@
         <button id="fallRosesBtn" class="btn btn-primary">Click to make roses fall</button>
     </header>
 
-    <div class="container">
-    </div>
-
     <!-- Falling rose image -->
-    <img src="https://cdn.pixabay.com/photo/2018/10/01/09/21/pixel-pastel-3706318_960_720.png" alt="Rose" class="rose">
+    <img src="https://cdn.pixabay.com/photo/2018/10/01/09/21/pixel-pastel-3706318_960_720.png" alt="Rose"
+        class="rose">
 
     <!-- Popup message -->
     <div id="popup" class="popup">
@@ -123,25 +121,25 @@
             roseImg.style.left = `${Math.random() * window.innerWidth}px`; // Random horizontal position
             roseImg.style.animation = 'fall 10s linear';
 
-            // Show popup message after 2 seconds
+            // Show popup message and button after 2 seconds
             setTimeout(() => {
                 popup.style.display = 'block';
-                // Show second button after 5 seconds
-                setTimeout(() => {
-                    const secondButton = document.createElement('button');
-                    secondButton.textContent = 'Ruko Bubu Ise Bhi Click Kro';
-                    secondButton.classList.add('btn', 'btn-primary');
-                    secondButton.onclick = function () {
-                        popup.innerHTML = '<p>I love you so much Mera Baccha🫂</p>';
-                    };
-                    popup.appendChild(secondButton);
-                }, 5000);
+                const secondButton = document.createElement('button');
+                secondButton.textContent = 'Ruko Bubu Ise Bhi Click Kro';
+                secondButton.classList.add('btn', 'btn-primary');
+                secondButton.onclick = function () {
+                    popup.innerHTML = '<p>I love you so much Mera Baccha🫂</p>';
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                    }, 5000);
+                };
+                popup.appendChild(secondButton);
             }, 2000);
 
-            // Hide the popup after 10 seconds
+            // Hide the popup after 20 seconds
             setTimeout(() => {
                 popup.style.display = 'none';
-            }, 10000);
+            }, 20000);
         });
 
         // Reset animation and hide roses after animation ends
@@ -149,7 +147,7 @@
             roseImg.style.display = 'none';
             roseImg.style.animation = 'none';
         });
-                            </script>
+    </script>
 </body>
 
 </html>
