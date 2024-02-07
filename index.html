@@ -50,6 +50,39 @@
             font-size: 1.2rem;
             margin-bottom: 20px;
         }
+
+        /* Falling rose animation */
+        .rose {
+            position: absolute;
+            display: none;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #ffcccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
     </style>
 
     <title>Mera Shaitan Bubbu---</title>
@@ -74,24 +107,55 @@
             </div>
         </div>
     </nav>
+    <header>
+        <h1>RoseRendezvous</h1>
+        <p>Celebrate Rose Day with love and beauty</p>
+        <button id="fallRosesBtn" class="btn btn-primary">Click to make roses fall</button>
+    </header>
+
     <div class="container">
         <div class="hero-content">
             <h2>About Rose Day</h2>
             <p>Rose Day marks the beginning of the Valentine's Week. It's a day to express love and appreciation to your loved ones with beautiful roses.</p>
         </div>
-
-        <div class="hero-content">
-            <h2>Why Choose RoseRendezvous?</h2>
-            <p>RoseRendezvous offers a wide selection of high-quality roses for every occasion. Our roses are carefully handpicked and delivered fresh to your doorstep.</p>
-        </div>
-
-        <div class="hero-content">
-            <h2>Spread Love with Roses</h2>
-            <p>Whether it's a romantic gesture or a token of appreciation, roses are the perfect way to express your feelings. Choose from our collection of stunning roses and make someone's day special.</p>
-        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Falling rose image -->
+    <img src="https://cdn.pixabay.com/photo/2019/04/17/19/31/rose-4139158_960_720.png" alt="Rose" class="rose">
+
+    <!-- Popup message -->
+    <div id="popup" class="popup">
+        <p>Happy Rose Day Mera Bubbu</p>
+    </div>
+
+    <script>
+        const fallRosesBtn = document.getElementById('fallRosesBtn');
+        const roseImg = document.querySelector('.rose');
+        const popup = document.getElementById('popup');
+
+        fallRosesBtn.addEventListener('click', () => {
+            // Show falling roses animation
+            roseImg.style.display = 'block';
+            roseImg.style.left = `${Math.random() * window.innerWidth}px`; // Random horizontal position
+            roseImg.style.animation = 'fall 4s ease-out';
+
+            // Show popup message after 2 seconds
+            setTimeout(() => {
+                popup.style.display = 'block';
+            }, 2000);
+        });
+
+        // Hide the popup when clicked
+        popup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // Reset animation and hide roses after animation ends
+        roseImg.addEventListener('animationend', () => {
+            roseImg.style.display = 'none';
+            roseImg.style.animation = 'none';
+        });
+    </script>
 </body>
 
 </html>
