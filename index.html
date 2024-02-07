@@ -36,7 +36,7 @@
         .hero-content {
             padding: 20px;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
@@ -77,9 +77,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 20px;
+            padding: 40px;
             background-color: #ffcccc;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 9999;
         }
@@ -92,15 +92,10 @@
     
     <header>
         <h1>RoseRendezvous</h1>
-        <p>Celebrate Rose Day with love and beauty</p>
-        <button id="fallRosesBtn" class="btn btn-primary">Rashu Zara Mujhe Click Krna.</button>
+        <button id="fallRosesBtn" class="btn btn-primary">Click to make roses fall</button>
     </header>
 
     <div class="container">
-        <div class="hero-content">
-            <h2>About Rose Day</h2>
-            <p>Rose Day marks the beginning of the Valentine's Week. It's a day to express love and appreciation to your loved ones with beautiful roses.</p>
-        </div>
     </div>
 
     <!-- Falling rose image -->
@@ -108,7 +103,7 @@
 
     <!-- Popup message -->
     <div id="popup" class="popup">
-        <p>Happy Rose Day Mera Bubbu</p>
+        <p>Happy Rose Day Mera Motu, Cutu, Shaitan Bubbu</p>
     </div>
 
     <script>
@@ -120,17 +115,17 @@
             // Show falling roses animation
             roseImg.style.display = 'block';
             roseImg.style.left = `${Math.random() * window.innerWidth}px`; // Random horizontal position
-            roseImg.style.animation = 'fall 4s ease-out';
+            roseImg.style.animation = 'fall 10s linear';
 
             // Show popup message after 2 seconds
             setTimeout(() => {
                 popup.style.display = 'block';
             }, 2000);
-        });
 
-        // Hide the popup when clicked
-        popup.addEventListener('click', () => {
-            popup.style.display = 'none';
+            // Hide the popup after 5 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 7000);
         });
 
         // Reset animation and hide roses after animation ends
